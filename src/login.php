@@ -40,7 +40,7 @@
 	<body>
 
 
-		<form method="post">
+		<form method="POST">
 			<div class="loginDiv">
 
 				<div class="wrapper">
@@ -58,7 +58,7 @@
 				</div>
 
 				<div class = wrapper>
-					<a class="changePageLink" href="signup.php">Click here if you wish to create an account instead</a>
+					<a class="changePageLink" href="signup.php">Create new account</a>
 				</div>
 
 			</div>

@@ -31,7 +31,7 @@
 	<body>
 
 
-		<form method="post">
+		<form method="POST">
 
 			<div class="loginDiv">
 
@@ -50,7 +50,7 @@
 				</div>
 
 				<div class = wrapper>
-					<a class="changePageLink" href="login.php">Already have an account? Click here to Log In instead</a>
+					<a class="changePageLink" href="login.php">Already have an account? Log In</a>
 				</div>
 
 			</div>
