@@ -14,10 +14,19 @@
 			
 		}
 		
-		// redirect to login
-		header("Location: /php/login.php");
+		// if _SESSION isnt set, redirect to login
+		header("Location: login.php");
 		die;
+	}
+	
+	function generate_user_id(){
+		$text = "";
+		$length = 8;
+		for ($i=0; $i<$length; $i++){
+			$text .= rand(0, 9);
+		}
 		
+		return $text;
 	}
 	
 	
