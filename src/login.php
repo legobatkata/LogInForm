@@ -18,16 +18,19 @@
 			if($result && mysqli_num_rows($result) > 0){
 				$user_data = mysqli_fetch_assoc($result);
 				if($user_data['user_pass'] === $user_pass){
-					$_SESSION['user_id'] = $user_data['user_id'];
-					header("Location: index.php");
-					die;
-				}
-			} else {
-				echo "wrong username or password!";
-			}
-		} else {
-			echo "please enter a valid username and password!";
-		}
+					
+					if($user_data['is_authenticated']){
+						$_SESSION['user_id'] = $user_data['user_id'];
+						header("Location: index.php");
+						die;
+					} else echo "account is not authenticated yet, please check your email!";
+					
+				}else echo "wrong username or password!";
+				
+			} else echo "error, could not read from database!";
+			
+		} else echo "please enter a valid username and password!";
+		
 	}
 ?>
 
