@@ -10,10 +10,21 @@
 		$user_pass = $_POST['passwordField'];
 		
 		if(!empty($user_name) && !empty($user_pass)){
-			// save to database
-			//$user_id = generate_user_id();
-			$query = "insert into users (user_email, user_name, user_pass) values ('$user_email', '$user_name', '$user_pass')";
-			mysqli_query($con, $query);
+			
+			// save user data to database
+			$register_query = "insert into users (user_email, user_name, user_pass) values ('$user_email', '$user_name', '$user_pass')";
+			mysqli_query($con, $register_query);
+			
+			// get the user id from the database
+			$getid_query = "select * from users where user_email = '$user_email'";
+			$result = mysqli_query($con, $getid_query);
+			
+			if($result && mysqli_num_rows($result) > 0){
+				$result_data = mysqli_fetch_assoc($result);
+				send_auth_email($user_email, $result_data['user_id']);
+			} else echo "error while sending email";
+			
+			
 			header("Location: login.php");
 			die;
 		} else {

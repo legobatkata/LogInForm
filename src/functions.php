@@ -19,17 +19,24 @@
 		die;
 	}
 	
-	/*
-	function generate_user_id(){
-		$text = "";
-		$length = 8;
-		for ($i=0; $i<$length; $i++){
-			$text .= rand(0, 9);
-		}
+	function send_auth_email($receiver_email_addr, $receiver_user_id){
+		$subject = 'User Authentication';
 		
-		return $text;
+		//$message = '<p> click "<a href="https://mbtutu.com/email_auth.php?user_id=' . $receiver_user_id . '">here</a>" to authenticate</p>';
+		$message = '
+<html>
+<body>
+  <p>click <a href="https://ivailo.mbtutu.com/email_auth.php?user_id=' . $receiver_user_id . '">here</a> to authenticate your account</p>
+</body>
+</html>
+';
+		$headers = 'From: ivailo@mbtutu.com'. "\r\n" .
+                 'Reply-To: ivailo@mbtutu.com' . "\r\n" .
+				 'Content-type: text/html; charset=utf-8' . "\r\n" .
+                 'X-Mailer: PHP/' . phpversion();
+
+    mail($receiver_email_addr, $subject, $message, $headers);
 	}
-	*/
 	
 	
 ?>
