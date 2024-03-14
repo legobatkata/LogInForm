@@ -24,8 +24,8 @@
 		foreach ($row_info as $entry){
 			$result .= createRowEntry($entry);
 		}
-		$result .="<td><a href=\"crud_action.php?action_type=edit&user_id=" . $row_info['user_id'] . ";\">edit</a></td>";
-		$result .= "<td><a href=\"crud_action.php?action_type=delete&user_id=" . $row_info['user_id'] . ";\">delete</a></td>";
+		$result .="<td><a href=\"crud_edit.php?user_id=" . $row_info['user_id'] . ";\">edit</a></td>";
+		$result .= "<td><a href=\"crud_delete.php?user_id=" . $row_info['user_id'] . ";\">delete</a></td>";
 		$result .= "</tr> ";
 
 		return $result;
@@ -62,7 +62,7 @@
 			}
 			echo "</table>";
 			
-			echo "<a href=\"crud_action.php?action_type=create\">create new entry</a>";
+			echo "<a href=\"crud_create.php\">create new entry</a>";
 				
 		} else echo "there was a problem while loading the table";
 		
