@@ -5,13 +5,14 @@
 	
 	if($_SERVER['REQUEST_METHOD'] == "POST"){
 		// something was posted
+		$user_email = $_POST['emailField'];
 		$user_name = $_POST['usernameField'];
 		$user_pass = $_POST['passwordField'];
 		
 		if(!empty($user_name) && !empty($user_pass)){
 			// save to database
-			$user_id = generate_user_id();
-			$query = "insert into users (user_id, user_name, user_pass) values ('$user_id', '$user_name', '$user_pass')";
+			//$user_id = generate_user_id();
+			$query = "insert into users (user_email, user_name, user_pass) values ('$user_email', '$user_name', '$user_pass')";
 			mysqli_query($con, $query);
 			header("Location: login.php");
 			die;
@@ -34,6 +35,11 @@
 		<form method="POST">
 
 			<div class="loginDiv">
+
+				<div class="wrapper">
+					<p class="fieldText">email:</p>
+					<input class="fieldInput" name="emailField" type="text"></input>
+				</div>
 
 				<div class="wrapper">
 					<p class="fieldText">username:</p>

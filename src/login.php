@@ -10,8 +10,9 @@
 		
 		if(!empty($user_name) && !empty($user_pass)){
 			// read from databse
-			$user_id = generate_user_id();
-			$query = "select * from users where user_name = '$user_name' limit 1";
+			//$user_id = generate_user_id();
+			// maybe i should make it so that u can login with email too
+			$query = "select * from users where user_name = '$user_name'";
 			$result = mysqli_query($con, $query);
 			
 			if($result && mysqli_num_rows($result) > 0){

@@ -24,8 +24,8 @@
 		foreach ($row_info as $entry){
 			$result .= createRowEntry($entry);
 		}
-		$result .="<td><a href=\"crud_action.php?action_type=edit&user_id=" . $row_info['id'] . ";\">edit</a></td>";
-		$result .= "<td><a href=\"crud_action.php?action_type=delete&user_id=" . $row_info['id'] . ";\">delete</a></td>";
+		$result .="<td><a href=\"crud_action.php?action_type=edit&user_id=" . $row_info['user_id'] . ";\">edit</a></td>";
+		$result .= "<td><a href=\"crud_action.php?action_type=delete&user_id=" . $row_info['user_id'] . ";\">delete</a></td>";
 		$result .= "</tr> ";
 
 		return $result;
@@ -49,8 +49,8 @@
 		if($all_users_result && mysqli_num_rows($all_users_result) > 0){
 			
 			echo "<table>";
-			echo "<th>id</th>";
 			echo "<th>user_id</th>";
+			echo "<th>user_email</th>";
 			echo "<th>user_name</th>";
 			echo "<th>user_pass</th>";
 			echo "<th>date</th>";
