@@ -3,10 +3,10 @@
 	include("connection.php");
 	include("functions.php");
 	
-	if($_SERVER['REQUEST_METHOD'] == "POST"){
+	if($_SERVER['REQUEST_METHOD'] == "GET"){
 		// something was posted
-		$action_type = $_POST['action_type'];
-		echo $action_type . " of " . $_POST['row_user_name'];
+		$action_type = $_GET['action_type'];
+		echo $action_type . " of " . $_GET['user_id'];
 	}
 ?>
 
