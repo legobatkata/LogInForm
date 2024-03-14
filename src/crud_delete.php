@@ -3,6 +3,12 @@
 	include("connection.php");
 	include("functions.php");
 	
+	// if a user without admin privileges enters, return them to the index page.
+	if(!$user_data['is_administrator']){
+		header("Location: index.php");
+		die;
+	}
+	
 	if($_SERVER['REQUEST_METHOD'] == "GET"){
 		$search_user_id = $_GET['user_id'];
 	}
