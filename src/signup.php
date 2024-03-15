@@ -22,7 +22,7 @@
 				
 				if($result && mysqli_num_rows($result) > 0){
 					$result_data = mysqli_fetch_assoc($result);
-					send_auth_email($user_email, $result_data['user_id']);
+					send_auth_email_2($user_email, $result_data['user_id']);
 				} else echo "error while sending email";
 				
 				

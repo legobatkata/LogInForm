@@ -1,5 +1,11 @@
 <?php
 	
+	use PHPMailer\PHPMailer\PHPMailer;
+	use PHPMailer\PHPMailer\Exception;
+	require 'PHPMailer/src/Exception.php';
+	require 'PHPMailer/src/PHPMailer.php';
+	require 'PHPMailer/src/SMTP.php';
+	
 	function check_login($con){
 		if(isset($_SESSION['user_id'])){
 			
@@ -26,23 +32,33 @@
 		return ($result && mysqli_num_rows($result) > 0);
 	}
 	
-	// function that sends an email with an authentication link
-	function send_auth_email($receiver_email_addr, $receiver_user_id){
-		$subject = 'User Authentication';
+	// second function to send emails
+	function send_auth_email_2($reciever_email_addr, $receiver_user_id){
 		$message = '
 				<html>
 					<body>
 						<p>click <a href="https://ivailo.mbtutu.com/email_auth.php?user_id=' . $receiver_user_id . '">here</a> to authenticate your account</p>
 					</body>
 				</html>';
-		$headers = 
-				'From: ivailo@mbtutu.com'. "\r\n" .
-                'Reply-To: ivailo@mbtutu.com' . "\r\n" .
-				'Content-type: text/html; charset=utf-8' . "\r\n" .
-                'X-Mailer: PHP/' . phpversion();
+		
+		$mail = new PHPMailer;
+		$mail->isSMTP(); 
+		$mail->SMTPDebug = 0; 
+		$mail->Host = "mail.mbtutu.com"; 
+		$mail->Port = 587;
+		$mail->SMTPSecure = 'tls'; 
+		$mail->SMTPAuth = true;
+		$mail->Username = "ivailo@mbtutu.com";
+		$mail->Password = "ivailoTCHe";
+		$mail->setFrom("ivailo@mbtutu.com", "Ivailo Mbtutu");
+		$mail->addAddress($reciever_email_addr, "user");
+		$mail->Subject = 'Log In Authentication';
+		$mail->msgHTML($message);$mail->AltBody = 'HTML messaging not supported';
+		
 
-    mail($receiver_email_addr, $subject, $message, $headers);
+		if(!$mail->send()){
+			echo "Mailer Error: " . $mail->ErrorInfo;
+		}	
 	}
-	
 	
 ?>
