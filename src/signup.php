@@ -4,39 +4,43 @@
 	include("functions.php");
 	
 	if($_SERVER['REQUEST_METHOD'] == "POST"){
-		// something was posted
 		$user_email = $_POST['emailField'];
 		$user_name = $_POST['usernameField'];
 		$user_pass = $_POST['passwordField'];
 		
-		if(!empty($user_name) && !empty($user_pass)){
-			
-			// save user data to database
-			$register_query = "insert into users (user_email, user_name, user_pass) values ('$user_email', '$user_name', '$user_pass')";
-			mysqli_query($con, $register_query);
-			
-			// get the user id from the database
-			$getid_query = "select * from users where user_email = '$user_email'";
-			$result = mysqli_query($con, $getid_query);
-			
-			if($result && mysqli_num_rows($result) > 0){
-				$result_data = mysqli_fetch_assoc($result);
-				send_auth_email($user_email, $result_data['user_id']);
-			} else echo "error while sending email";
-			
-			
-			header("Location: login.php");
-			die;
-		} else {
-			echo "please enter a valid username and password";
-		}
+		if($user_name && $user_email && $user_pass){
+			if(!userOrEmailExistsInDb($con, $user_name, $user_email)){
+				// user doesnt exist, continue as normal
+				
+				// save user data to database
+				$register_query = "insert into users (user_email, user_name, user_pass) values ('$user_email', '$user_name', '$user_pass')";
+				mysqli_query($con, $register_query);
+				
+				// get the user id from the database
+				$getid_query = "select * from users where user_email = '$user_email'";
+				$result = mysqli_query($con, $getid_query);
+				
+				if($result && mysqli_num_rows($result) > 0){
+					$result_data = mysqli_fetch_assoc($result);
+					send_auth_email($user_email, $result_data['user_id']);
+				} else echo "error while sending email";
+				
+				
+				header("Location: login.php");
+				die;
+			} else {
+				// alert the user that name/mail is taken
+				echo "username or email is already taken";
+			}
+		} else echo "Please enter valid information!";			
+
 	}
 ?>
 
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="../css/login_styles.css">
+		<link rel="stylesheet" href="../css/signup_styles.css">
 		<title>Sign Up</title>
 	</head>
 
@@ -49,21 +53,29 @@
 
 				<div class="wrapper">
 					<p class="fieldText">email:</p>
-					<input class="fieldInput" name="emailField" type="text"></input>
+					<input class="fieldInput" id="emailField" name="emailField" type="text"></input>
 				</div>
+				<p class="warnText" id="invalidEmailText">Email is not valid!</p>
+				<p class="warnText" id="tooLongEmailText">Email is too long!</p>
 
 				<div class="wrapper">
 					<p class="fieldText">username:</p>
-					<input class="fieldInput" name="usernameField" type="text"></input>
+					<input class="fieldInput" id="usernameField" name="usernameField" type="text"></input>
 				</div>
+				<p class="warnText" id="invalidUsernameText">Username is not valid!</p>
+				<p class="warnText" id="tooLongUsernameText">Username is too long!</p>
+				<p class="warnText" id="tooShortUsernameText">Username is too short!</p>
 				
 				<div class = wrapper>
 					<p class="fieldText">password:</p>
-					<input class="fieldInput" name="passwordField" type="password"></input>
+					<input class="fieldInput" id="passwordField" name="passwordField" type="password"></input>
 				</div>
+				<p class="warnText" id="passStrengthText">Password strength is: </p>
+				<p class="warnText" id="tooLongPasswordText">Password is too long!</p>
+				<p class="warnText" id="tooShortPasswordText">Password is too short!</p>
 
 				<div class = wrapper>
-					<input class="confirmButton" type="submit" value="Sign Up">
+					<input class="confirmButton" id="submitButton" value="Sign Up" type="submit" disabled>
 				</div>
 
 				<div class = wrapper>
@@ -73,7 +85,7 @@
 			</div>
 		</form>
 		
-		<script src="js/login_scripts.js"></script>
+		<script src="js/signup_scripts.js"></script>
 
 	</body>
 </html>

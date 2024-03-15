@@ -1,0 +1,54 @@
+.loginDiv {
+	margin: 200px auto 0 auto;
+	width: 25%;
+	border: 3px solid green;
+	padding: 10px;
+}
+
+.wrapper {
+	padding: 8px;
+    margin: auto;
+	text-align: center;
+}
+
+.fieldText {
+	display: inline-block;
+	width: 20%;
+}
+
+.fieldInput {
+	display: inline-block;
+	width: 70%;
+	height: 35px;
+	box-sizing: border-box;
+	border: 1px solid gray;
+}
+
+.confirmButton {
+	width: 50%;
+	height: 35px;
+	color: white;
+	background-color: green;
+	cursor: pointer;
+	border: none;
+}
+
+.confirmButton:disabled {
+	width: 50%;
+	height: 35px;
+	color: white;
+	background-color: gray;
+	cursor: default;
+	border: none;
+}
+
+.changePageLink {
+	margin: auto;
+	text-align: center;
+	color: gray;
+	cursor: pointer;
+}
+
+.warnText {
+  display: none;
+}

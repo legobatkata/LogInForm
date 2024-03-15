@@ -4,17 +4,15 @@
 	include("functions.php");
 	
 	if($_SERVER['REQUEST_METHOD'] == "POST"){
-		// something was posted
 		$user_name = $_POST['usernameField'];
 		$user_pass = $_POST['passwordField'];
 		
 		if(!empty($user_name) && !empty($user_pass)){
-			// read from databse
-			//$user_id = generate_user_id();
-			// maybe i should make it so that u can login with email too
-			$query = "select * from users where user_name = '$user_name'";
+			// get user data
+			$query = "select * from `users` where `user_name` = '$user_name' or `user_email` = '$user_name'";
 			$result = mysqli_query($con, $query);
 			
+			// check if password matches
 			if($result && mysqli_num_rows($result) > 0){
 				$user_data = mysqli_fetch_assoc($result);
 				if($user_data['user_pass'] === $user_pass){
@@ -25,7 +23,7 @@
 						die;
 					} else echo "account is not authenticated yet, please check your email!";
 					
-				}else echo "wrong username or password!";
+				} else echo "wrong username or password!";
 				
 			} else echo "error, could not read from database!";
 			
@@ -48,7 +46,7 @@
 			<div class="loginDiv">
 
 				<div class="wrapper">
-					<p class="fieldText">username:</p>
+					<p class="fieldText">username or email:</p>
 					<input class="fieldInput" name="usernameField"></input>
 				</div>
 				

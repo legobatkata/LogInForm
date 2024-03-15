@@ -3,8 +3,9 @@
 	include("connection.php");
 	include("functions.php");
 	
+	$current_user_data = check_login($con);
 	// if a user without admin privileges enters, return them to the index page.
-	if(!$user_data['is_administrator']){
+	if(!$current_user_data['is_administrator']){
 		header("Location: index.php");
 		die;
 	}

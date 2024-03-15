@@ -4,10 +4,10 @@
 	include("connection.php");
 	include("functions.php");
 	
-	$user_data = check_login($con);
+	$current_user_data = check_login($con);
 	
 	// if a user without admin privileges enters, return them to the index page.
-	if(!$user_data['is_administrator']){
+	if(!$current_user_data['is_administrator']){
 		header("Location: index.php");
 		die;
 	}
@@ -41,10 +41,9 @@
 	</head>
 	
 	<body>
-		<h1>This be the admin CRUD page</h1>
+		<h1>This is the admin CRUD page</h1>
 	</body>
 	<?php
-	
 		// show table of users
 		if($all_users_result && mysqli_num_rows($all_users_result) > 0){
 			
@@ -65,9 +64,11 @@
 			echo "<a href=\"crud_create.php\">create new entry</a>";
 				
 		} else echo "there was a problem while loading the table";
-		
-	
 	?>
+	<br>
+	<a href="index.php">Return to index page.</a>
+	
+	
 	
 
 </html>
