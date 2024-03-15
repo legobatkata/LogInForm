@@ -29,21 +29,26 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="../css/login_styles.css">
-		<title>Edit Entry</title>
+		<link rel="stylesheet" href="../css/crud_styles.css">
+		<title>Delete Entry</title>
 	</head>
 
 	<body>
 
-
-		<form method="POST">
-			<label>Are you sure you wish to delete the user with id <?php echo $search_user_id?></label><br>
-			<input type="hidden" name="to_delete_id" value=<?php echo $search_user_id?>></input>
-			<input type="submit" name="btn_cancel" value="cancel"> </input>
-			<input type="submit" name="btn_apply" value="apply"> </input><br>
-		</form>
-		
-		<script src="js/login_scripts.js"></script>
+		<div class="borderDivSmall">
+			<form method="POST">
+				<br>
+				<div class="wrapper">
+					<label>Are you sure you wish to delete the user with id <?php echo $search_user_id?></label>
+					<input class= "titleText" type="hidden" name="to_delete_id" value=<?php echo $search_user_id?>></input>
+				</div>
+				
+				<div class="wrapper">
+					<input class="actionButton" type="submit" name="btn_cancel" value="cancel"> </input>
+					<input class="actionButton" type="submit" name="btn_apply" value="apply"> </input>
+				</div>
+			</form>
+		</div>
 
 	</body>
 </html>

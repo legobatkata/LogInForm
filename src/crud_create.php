@@ -36,32 +36,36 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="../css/login_styles.css">
-		<title>Edit Entry</title>
+		<link rel="stylesheet" href="../css/crud_styles.css">
+		<title>Create Entry</title>
 	</head>
 
 	<body>
 
 
-		<form method="POST">
-			<label>new id:</label><br>
-			<input name="new_user_id"> </input><br>
-			<label>new email:</label><br>
-			<input name="new_user_email"> </input><br>
-			<label>new username:</label><br>
-			<input name="new_user_name"> </input><br>
-			<label>new password:</label><br>
-			<input name="new_user_pass"> </input><br>
-			<label>new date:</label><br>
-			<input name="new_date"> </input><br>
-			<label>new is_auth:</label><br>
-			<input name="new_is_authenticated"> </input><br>
-			<label>new is_admin:</label><br>
-			<input name="new_is_administrator"> </input><br>
-			<br>
-			<input type="submit" name="btn_cancel" value="cancel"> </input>
-			<input type="submit" name="btn_apply" value="apply"> </input><br>
-		</form>
+		<div class="borderDivSmall">
+			<form method="POST">
+				<label>new id:</label><br>
+				<div class="wrapper"><input class="inputText" name="new_user_id"> </input><br></div>
+				<label>new email:</label><br>
+				<div class="wrapper"><input class="inputText" name="new_user_email"> </input><br></div>
+				<label>new username:</label><br>
+				<div class="wrapper"><input class="inputText" name="new_user_name"> </input><br></div>
+				<label>new password:</label><br>
+				<div class="wrapper"><input class="inputText" name="new_user_pass"> </input><br></div>
+				<label>new date:</label><br>
+				<div class="wrapper"><input class="inputText" name="new_date"> </input><br></div>
+				<label>new is_auth:</label><br>
+				<div class="wrapper"><input class="inputText" name="new_is_authenticated"> </input><br></div>
+				<label>new is_admin:</label><br>
+				<div class="wrapper"><input class="inputText" name="new_is_administrator"> </input><br></div>
+				<br>
+				<div class="wrapper">
+					<input class="actionButton" type="submit" name="btn_cancel" value="cancel"> </input>
+					<input class="actionButton" type="submit" name="btn_apply" value="apply"> </input><br>
+				</div>
+			</form>
+		</div>
 		
 		<script src="js/login_scripts.js"></script>
 

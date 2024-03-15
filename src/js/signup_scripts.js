@@ -17,14 +17,17 @@ function getPasswordStrengthRating(pass){
 
 
 function getPasswordStrengthString(rating){
-	var passStrengthString;
-	
-	if(rating <= 1) passStrengthString = "weak";
-	else if(rating == 2) passStrengthString = "ok";
-	else if(rating == 3) passStrengthString = "strong";
-	else if(rating >= 4) passStrengthString = "very strong";
-	
-	return passStrengthString;
+	if(rating <= 1) return "weak";
+	else if(rating == 2) return "ok";
+	else if(rating == 3) return "strong";
+	else if(rating >= 4) return "very strong";
+}
+
+function getPasswordStrengthColor(rating){
+	if(rating <= 1) return '#dd0004';
+	else if(rating == 2) return 'orange';
+	else if(rating == 3) return '#93dc5c';
+	else if(rating >= 4) return 'green';
 }
 
 
@@ -144,6 +147,7 @@ passwordField.onkeyup = function(){
 	var passStrength = getPasswordStrengthRating(passwordField.value);
 	passStrengthText.innerHTML = "Password strength: " + getPasswordStrengthString(passStrength);
 	passStrengthText.style.display = 'block';
+	passStrengthText.style.color = getPasswordStrengthColor(passStrength);
 	
 	// check if password is too long
 	if(passwordField.value.length >= 128) {

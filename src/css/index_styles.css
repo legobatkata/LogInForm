@@ -1,0 +1,21 @@
+.borderDiv {
+	margin: 200px auto 0 auto;
+	width: 80%;
+	border: 3px solid green;
+	padding: 10px;
+}
+
+.titleText {
+	font-size: 96px;
+	text-align: center;
+}
+
+.greetingText {
+	font-size: 36px;
+	text-align: center;
+}
+
+.linkText {
+	font-size: 18px;
+	text-align: center;
+}

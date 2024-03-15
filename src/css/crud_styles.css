@@ -1,0 +1,69 @@
+.borderDiv {
+	margin: 200px auto 0 auto;
+	width: 80%;
+	border: 3px solid green;
+	padding: 10px;
+}
+
+.borderDivSmall {
+	margin: 200px auto 0 auto;
+	width: 25%;
+	border: 3px solid green;
+	padding: 10px;
+}
+
+.wrapper {
+	padding: 8px;
+    margin: auto;
+	text-align: center;
+}
+
+.inputText {
+	display: inline-block;
+	width: 90%;
+	font-size: 16px;
+	font-family: Arial;
+}
+
+.titleText {
+	font-size: 48px;
+	text-align: center;
+}
+
+.usersTable {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+table, th, td {
+	border: 1px solid;
+}
+
+td {
+	padding: 8px;
+}
+
+.createEntryLink {
+	padding: 8px;
+	font-size: 18px;
+	width: 100%;
+	display: block;
+	text-align: center;
+}
+
+.returnLink {
+	padding: 8px;
+	font-size: 18px;
+	text-align: center;
+}
+
+.actionButton {
+	padding: 16px;
+	background: green;
+	font-size: 16px;
+	font-family: Arial;
+	font-weight: bold;
+	color: white;
+	border: none;
+	cursor: pointer;
+}

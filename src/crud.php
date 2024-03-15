@@ -38,37 +38,42 @@
 <html>
 	<head>
 		<title>Admin</title>
+		<link rel="stylesheet" href="../css/crud_styles.css">
 	</head>
 	
 	<body>
-		<h1>This is the admin CRUD page</h1>
+		
+		<div class="borderDiv">
+		
+			<h1 class="titleText">This is the admin CRUD page</h1>
+			<?php
+				// show table of users
+				if($all_users_result && mysqli_num_rows($all_users_result) > 0){
+					
+					echo "<table class=\"usersTable\">";
+					echo "<th>user_id</th>";
+					echo "<th>user_email</th>";
+					echo "<th>user_name</th>";
+					echo "<th>user_pass</th>";
+					echo "<th>date</th>";
+					echo "<th>is_auth</th>";
+					echo "<th>is_admin</th>";
+					
+					while($row = mysqli_fetch_assoc($all_users_result)){   
+						echo createTableRow($row);
+					}
+					echo "<tr><td colspan=\"9\"> <div clas=\"wrapper\"><a class=\"createEntryLink\" href=\"crud_create.php\">create new entry</a></div></td></tr>";
+					
+					echo "</table>";
+					
+						
+				} else echo "there was a problem while loading the table";
+			?>
+			<br>
+			<a class="returnLink" href="index.php">Return to index page.</a>
+			
+		</div>
+	
 	</body>
-	<?php
-		// show table of users
-		if($all_users_result && mysqli_num_rows($all_users_result) > 0){
-			
-			echo "<table>";
-			echo "<th>user_id</th>";
-			echo "<th>user_email</th>";
-			echo "<th>user_name</th>";
-			echo "<th>user_pass</th>";
-			echo "<th>date</th>";
-			echo "<th>is_auth</th>";
-			echo "<th>is_admin</th>";
-			
-			while($row = mysqli_fetch_assoc($all_users_result)){   
-				echo createTableRow($row);
-			}
-			echo "</table>";
-			
-			echo "<a href=\"crud_create.php\">create new entry</a>";
-				
-		} else echo "there was a problem while loading the table";
-	?>
-	<br>
-	<a href="index.php">Return to index page.</a>
 	
-	
-	
-
 </html>
