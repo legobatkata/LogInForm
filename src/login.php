@@ -21,13 +21,13 @@
 						$_SESSION['user_id'] = $user_data['user_id'];
 						header("Location: index.php");
 						die;
-					} else echo "account is not authenticated yet, please check your email!";
+					} else echo $acc_not_auth_errtext = "account is not authenticated yet, please check your email!";
 					
-				} else echo "wrong username or password!";
+				} else echo $wrong_user_errtext = "wrong username or password!";
 				
-			} else echo "error, could not read from database!";
+			} else echo $database_errtext = "error, could not read from database!";
 			
-		} else echo "please enter a valid username and password!";
+		} else echo $invalid_data_errtext = "please enter a valid username and password!";
 		
 	}
 ?>
@@ -35,7 +35,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="../css/login_styles.css">
+		<link rel="stylesheet" href="../css/login_signup_styles.css">
 		<title>Log In</title>
 	</head>
 
@@ -46,7 +46,7 @@
 			<div class="loginDiv">
 
 				<div class="wrapper">
-					<p class="fieldText">username or email:</p>
+					<p class="fieldText">user:</p>
 					<input class="fieldInput" name="usernameField"></input>
 				</div>
 				
@@ -64,6 +64,14 @@
 				</div>
 
 			</div>
+			
+			<div class = "bottomMessage" <?php if(!$acc_not_auth_errtext && !$wrong_user_errtext && !$database_errtext && !$invalid_data_errtext) echo "hidden";?>>
+				<p class = "bottomErrorText"><?php echo $acc_not_auth_errtext;?></a>
+				<p class = "bottomErrorText"><?php echo $wrong_user_errtext;?></a>
+				<p class = "bottomErrorText"><?php echo $database_errtext;?></a>
+				<p class = "bottomErrorText"><?php echo $invalid_data_errtext;?></a>
+			</div>
+			
 		</form>
 		
 		<script src="js/login_scripts.js"></script>

@@ -30,9 +30,9 @@
 				die;
 			} else {
 				// alert the user that name/mail is taken
-				echo "username or email is already taken";
+				$taken_usr_errtext = "Username or email is already taken";
 			}
-		} else echo "Please enter valid information!";			
+		} else $invalid_usr_errtext = "Please enter valid information";			
 
 	}
 ?>
@@ -40,7 +40,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<link rel="stylesheet" href="../css/signup_styles.css">
+		<link rel="stylesheet" href="../css/login_signup_styles.css">
 		<title>Sign Up</title>
 	</head>
 
@@ -81,8 +81,16 @@
 				<div class = wrapper>
 					<a class="changePageLink" href="login.php">Already have an account? Log In</a>
 				</div>
+				
+				
 
 			</div>
+			
+			<div class = "bottomMessage" <?php if(!$taken_usr_errtext && !$invalid_usr_errtext) echo "hidden";?>>
+				<p class = "bottomErrorText"><?php echo $taken_usr_errtext;?></a>
+				<p class = "bottomErrorText"><?php echo $invalid_usr_errtext;?></a>
+			</div>
+			
 		</form>
 		
 		<script src="js/signup_scripts.js"></script>
