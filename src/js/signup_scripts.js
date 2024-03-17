@@ -1,4 +1,15 @@
 
+function isEmailValid (emailString){
+	var regex_mail = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+	if (emailString.match(regex_mail)) return true;
+	else return false;
+}
+
+function isUsernameValid (usernameString){
+	var regex_username = /^[a-zA-Z0-9]+$/;
+	if (usernameString.match(regex_username)) return true;
+	else return false;
+}
 
 function getPasswordStrengthRating(pass){
 	var regex_pass_lower = /[a-z]/g;
@@ -15,7 +26,6 @@ function getPasswordStrengthRating(pass){
 	return passStrength;
 }
 
-
 function getPasswordStrengthString(rating){
 	if(rating <= 1) return "weak";
 	else if(rating == 2) return "ok";
@@ -29,7 +39,6 @@ function getPasswordStrengthColor(rating){
 	else if(rating == 3) return '#93dc5c';
 	else if(rating >= 4) return 'green';
 }
-
 
 // function and variables used to check if the submit should be disabled or no
  
@@ -53,10 +62,9 @@ var invalidEmailText = document.getElementById('invalidEmailText');
 var tooLongEmailText = document.getElementById('tooLongEmailText');
 
 emailInput.onkeyup = function(){
-	var regex_mail = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 	
 	// check if email is valid
-	if (emailInput.value.match(regex_mail)){
+	if (isEmailValid(emailInput.value)){
 		invalidEmailText.style.display = 'none';
 		isEmailOk = true;
 	}
@@ -94,10 +102,9 @@ var tooLongUsernameText = document.getElementById('tooLongUsernameText');
 var tooShortUsernameText = document.getElementById('tooShortUsernameText');
 
 usernameField.onkeyup = function(){
-	var regex_username = /^[a-zA-Z0-9]+$/;
 	
 	// check if username is valid
-	if (usernameField.value.match(regex_username)) {
+	if (isUsernameValid(usernameField.value)) {
 		invalidUsernameText.style.display = 'none';
 		isUsernameOk = true;
 	}

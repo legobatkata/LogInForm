@@ -21,13 +21,13 @@
 						$_SESSION['user_id'] = $user_data['user_id'];
 						header("Location: index.php");
 						die;
-					} else echo $acc_not_auth_errtext = "account is not authenticated yet, please check your email!";
+					} else $acc_not_auth_errtext = "account is not authenticated yet, please check your email!";
 					
-				} else echo $wrong_user_errtext = "wrong username or password!";
+				} else $wrong_user_errtext = "wrong username or password!";
 				
-			} else echo $database_errtext = "error, could not read from database!";
+			} else $database_errtext = "error, could not read from database!";
 			
-		} else echo $invalid_data_errtext = "please enter a valid username and password!";
+		} else $invalid_data_errtext = "please enter a valid username and password!";
 		
 	}
 ?>
