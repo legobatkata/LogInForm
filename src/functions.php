@@ -44,12 +44,12 @@
 		$mail = new PHPMailer;
 		$mail->isSMTP(); 
 		$mail->SMTPDebug = 0; 
-		$mail->Host = "mail.mbtutu.com"; 
+		$mail->Host = "_"; 
 		$mail->Port = 587;
 		$mail->SMTPSecure = 'tls'; 
 		$mail->SMTPAuth = true;
-		$mail->Username = "ivailo@mbtutu.com";
-		$mail->Password = "ivailoTCHe";
+		$mail->Username = "_";
+		$mail->Password = "_";
 		$mail->setFrom("ivailo@mbtutu.com", "Ivailo Mbtutu");
 		$mail->addAddress($reciever_email_addr, "user");
 		$mail->Subject = 'Log In Authentication';
